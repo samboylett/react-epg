@@ -3,7 +3,7 @@ import React from 'react';
 import Enzyme, { mount } from 'enzyme';
 import Adapter from 'enzyme-adapter-react-16';
 import 'jest-enzyme';
-import { TimeLine, TimeSlot } from '../../lib/index';
+import { TimeLine, TimeSlot, Channel } from '../../lib/index';
 
 Enzyme.configure({ adapter: new Adapter() });
 
@@ -12,7 +12,10 @@ describe('TimeLine', () => {
 
   const setupComponent = (props = {}) => {
     component = mount((
-      <TimeLine channel="Foo Bar" {...props}>
+      <TimeLine
+        channel={<Channel name="Foo Bar" />}
+        {...props}
+      >
         {props.children || (<TimeSlot start={0} end={10}>Bah</TimeSlot>)}
       </TimeLine>
     ));
