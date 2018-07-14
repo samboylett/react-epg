@@ -14,7 +14,9 @@ npm i --save react-epg
 
 ## Usage
 
-[Documentation](https://samboylett.github.io/react-epg/)
+[Documentation](https://react-epg-docs.netlify.com/)
+
+[Examples](https://react-epg-storybook.netlify.com/)
 
 ```jsx
 import EPG, { Channel, TimeSlot, Show } from 'react-epg';
