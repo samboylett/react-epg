@@ -20,26 +20,26 @@ npm i --save react-epg
 [Examples](https://react-epg-storybook.netlify.com/)
 
 ```jsx
-import EPG, { Channel, TimeSlot, Show } from 'react-epg';
+import EPG, { Channel, TimeLine, TimeSlot, Show } from 'react-epg';
 
 const MyEPG = () => (
   <EPG>
-    <Channel name="Sky">
+    <TimeLine channel={<Channel name="Sky" />}>
       <TimeSlot start={new Date('1/1/97 16:00')} end={new Date('1/1/97 16:30')}>
         <Show title="The Simpsons" />
       </TimeSlot>
       <TimeSlot start={new Date('1/1/97 16:30')} end={new Date('1/1/97 17:30')}>
         <Show title="Inception" />
       </TimeSlot>
-    </Channel>
-    <Channel name="Dave">
+    </TimeLine>
+    <TimeLine channel={<Channel name="Dave" />}>
       <TimeSlot start={new Date('1/1/97 16:00')} end={new Date('1/1/97 17:00')}>
         <Show title="Top Gear" />
       </TimeSlot>
       <TimeSlot start={new Date('1/1/97 17:00')} end={new Date('1/1/97 18:45')}>
         <Show title="Shrek 3" />
       </TimeSlot>
-    </Channel>
+    </TimeLine>
   </EPG>
 );
 ```
