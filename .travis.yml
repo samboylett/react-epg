@@ -13,4 +13,5 @@ jobs:
         - npm run codecov
     - stage: build
       script:
+        - npm run doc
         - npm run prepublishOnly
