@@ -17,6 +17,9 @@ storiesOf('EPG', module)
         <TimeSlot start={new Date('1/1/97 15:00')} end={new Date('1/1/97 15:30')}>
           <Show title="The Simpsons" />
         </TimeSlot>
+        <TimeSlot start={new Date('1/1/97 15:30')} end={new Date('1/1/97 16:30')}>
+          <Show title="A Movie" />
+        </TimeSlot>
       </Channel>
     </EPG>
   ));
