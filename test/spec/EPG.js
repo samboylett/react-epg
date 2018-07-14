@@ -45,6 +45,10 @@ describe('EPG', () => {
     it('sets the last TimeIndicators time to the last time', () => {
       expect(headTr().find(TimeIndicator).last()).toHaveProp('time', new Date('1/1/99 14:45').getTime());
     });
+
+    it('sets the 30th TimeIndicators time to 30 minutes after the first time', () => {
+      expect(headTr().find(TimeIndicator).at(30)).toHaveProp('time', new Date('1/1/99 14:00').getTime());
+    });
   });
 
   describe('basic structure', () => {
