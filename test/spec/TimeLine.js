@@ -12,7 +12,7 @@ describe('TimeLine', () => {
 
   const setupComponent = (props = {}) => {
     component = mount((
-      <TimeLine name="Foo Bar" {...props}>
+      <TimeLine channel="Foo Bar" {...props}>
         {props.children || (<TimeSlot start={0} end={10}>Bah</TimeSlot>)}
       </TimeLine>
     ));
