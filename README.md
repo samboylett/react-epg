@@ -4,6 +4,7 @@
 [![npm version](https://badge.fury.io/js/react-epg.svg)](https://badge.fury.io/js/react-epg)
 [![Build Status](https://travis-ci.org/samboylett/react-epg.svg?branch=master)](https://travis-ci.org/samboylett/react-epg)
 [![codecov](https://codecov.io/gh/samboylett/react-epg/branch/master/graph/badge.svg)](https://codecov.io/gh/samboylett/react-epg)
+[![Mutation testing badge](https://badge.stryker-mutator.io/github.com/samboylett/react-epg/master)](https://stryker-mutator.github.io)
 [![Codacy Badge](https://api.codacy.com/project/badge/Grade/45b4f27245ba461a812c34194d365d94)](https://www.codacy.com/app/samboylett/react-epg?utm_source=github.com&amp;utm_medium=referral&amp;utm_content=samboylett/react-epg&amp;utm_campaign=Badge_Grade)
 
 ## Installation
