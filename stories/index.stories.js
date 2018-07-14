@@ -14,10 +14,10 @@ storiesOf('EPG', module)
   .add('basic', () => (
     <EPG>
       <Channel name="Sky">
-        <TimeSlot start={new Date('1/1/97 16:00')} end={new Date('1/1/97 16:29')}>
+        <TimeSlot start={new Date('1/1/97 16:00')} end={new Date('1/1/97 16:30')}>
           <Show title="The Simpsons" />
         </TimeSlot>
-        <TimeSlot start={new Date('1/1/97 16:30')} end={new Date('1/1/97 17:29')}>
+        <TimeSlot start={new Date('1/1/97 16:30')} end={new Date('1/1/97 17:30')}>
           <Show title="A Movie" />
         </TimeSlot>
       </Channel>
@@ -26,15 +26,15 @@ storiesOf('EPG', module)
   .add('two channels', () => (
     <EPG>
       <Channel name="Sky">
-        <TimeSlot start={new Date('1/1/97 16:00')} end={new Date('1/1/97 16:29')}>
+        <TimeSlot start={new Date('1/1/97 16:00')} end={new Date('1/1/97 16:30')}>
           <Show title="The Simpsons" />
         </TimeSlot>
-        <TimeSlot start={new Date('1/1/97 17:00')} end={new Date('1/1/97 17:29')}>
+        <TimeSlot start={new Date('1/1/97 17:00')} end={new Date('1/1/97 17:30')}>
           <Show title="A Movie" />
         </TimeSlot>
       </Channel>
       <Channel name="Dave">
-        <TimeSlot start={new Date('1/1/97 17:00')} end={new Date('1/1/97 17:29')}>
+        <TimeSlot start={new Date('1/1/97 17:00')} end={new Date('1/1/97 17:30')}>
           <Show title="Top Gear" />
         </TimeSlot>
       </Channel>

@@ -26,7 +26,7 @@ describe('Channel', () => {
       children: [
         <TimeSlot
           start={new Date('1/1/97 14:00')}
-          end={new Date('1/1/97 14:59')}
+          end={new Date('1/1/97 15:00')}
         >Foo</TimeSlot>,
         <TimeSlot
           start={new Date('1/1/97 16:00')}
@@ -39,7 +39,7 @@ describe('Channel', () => {
       const timeSlots = component.find(TimeSlot);
       expect(timeSlots).toHaveLength(3);
       expect(timeSlots.at(1)).toHaveProp('start', new Date('1/1/97 15:00'));
-      expect(timeSlots.at(1)).toHaveProp('end', new Date('1/1/97 15:59'));
+      expect(timeSlots.at(1)).toHaveProp('end', new Date('1/1/97 16:00'));
     });
   });
 
