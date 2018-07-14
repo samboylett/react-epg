@@ -17,24 +17,35 @@ describe('TimeIndicator', () => {
   };
 
   const th = () => component.find('th');
+  const div = () => th().find('div');
 
-  const structureTests = () => {
+  const structureTests = (withDiv) => {
     it('renders a th', () => {
       expect(component.children()).toHaveLength(1);
       expect(th()).toHaveLength(1);
     });
-  };
 
-  const renderTimeTests = () => {
-    it('renders the time text in the th', () => {
-      expect(th()).toHaveText('16:00');
+    it('sets th width to 1px', () => {
+      expect(th()).toHaveProp('style', expect.objectContaining({ width: '1px' }));
     });
-  };
 
-  const renderNoTimeTests = () => {
-    it('renders no text in the th', () => {
-      expect(th()).toHaveText('');
-    });
+    if (withDiv) {
+      it('renders a div in the th', () => {
+        expect(div()).toHaveLength(1);
+      });
+
+      it('sets div width to 1px', () => {
+        expect(div()).toHaveProp('style', expect.objectContaining({ width: '1px' }));
+      });
+
+      it('sets div whiteSpace to nowrap', () => {
+        expect(div()).toHaveProp('style', expect.objectContaining({ whiteSpace: 'nowrap' }));
+      });
+    } else {
+      it('does not render a div', () => {
+        expect(div()).toHaveLength(0);
+      });
+    }
   };
 
   const dateNumberTests = (name, date, props, tests) => {
@@ -63,12 +74,24 @@ describe('TimeIndicator', () => {
     it('renders the time text in the th', () => {
       expect(th()).toHaveText('16:00');
     });
+
+    structureTests(true);
+  });
+
+  dateNumberTests('with time with single digits hour', new Date('1/1/99 4:00'), {}, () => {
+    it('renders the hours with leading zeros', () => {
+      expect(th()).toHaveText('04:00');
+    });
+
+    structureTests(true);
   });
 
   dateNumberTests('with time on the half hour', new Date('1/1/99 16:30'), {}, () => {
     it('renders no text in the th', () => {
       expect(th()).toHaveText('');
     });
+
+    structureTests(false);
   });
 
   dateNumberTests(
@@ -79,6 +102,8 @@ describe('TimeIndicator', () => {
       it('renders the time in the th', () => {
         expect(th()).toHaveText('16:30');
       });
+
+      structureTests(true);
     }
   );
 
@@ -90,6 +115,8 @@ describe('TimeIndicator', () => {
       it('renders the time in the th using the format function', () => {
         expect(th()).toHaveText('1999-01-01T16:00:00.000Z');
       });
+
+      structureTests(true);
     }
   );
 });
