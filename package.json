@@ -13,7 +13,7 @@
     "test:watch": "NODE_ENV=test jest --watch",
     "test:mutate": "NODE_ENV=test stryker run",
     "codecov": "codecov",
-    "doc": "jsdoc -c jsdoc.json",
+    "doc": "jsdoc -c jsdoc.json --debug",
     "storybook": "start-storybook -p 6006",
     "build-storybook": "build-storybook"
   },
