@@ -3,7 +3,7 @@ import React from 'react';
 import Enzyme, { mount } from 'enzyme';
 import Adapter from 'enzyme-adapter-react-16';
 import 'jest-enzyme';
-import EPG, { TimeIndicator, Channel, TimeSlot, Show } from '../../lib/index';
+import EPG, { TimeIndicator, TimeLine, TimeSlot, Show } from '../../lib/index';
 
 Enzyme.configure({ adapter: new Adapter() });
 
@@ -58,14 +58,14 @@ describe('EPG', () => {
   describe('with single channel and time slot', () => {
     beforeEach(() => setupComponent({
       children: (
-        <Channel name="Dave">
+        <TimeLine name="Dave">
           <TimeSlot
             start={new Date('1/1/99 13:30')}
             end={new Date('1/1/99 14:45')}
           >
             <Show title="Top Gear" />
           </TimeSlot>
-        </Channel>
+        </TimeLine>
       )
     }));
 
@@ -75,7 +75,7 @@ describe('EPG', () => {
   describe('with single channel and 2 time slot', () => {
     beforeEach(() => setupComponent({
       children: (
-        <Channel name="Dave">
+        <TimeLine name="Dave">
           <TimeSlot
             start={new Date('1/1/99 13:30')}
             end={new Date('1/1/99 14:30')}
@@ -88,7 +88,7 @@ describe('EPG', () => {
           >
             <Show title="Mad Show" />
           </TimeSlot>
-        </Channel>
+        </TimeLine>
       )
     }));
 
@@ -98,34 +98,34 @@ describe('EPG', () => {
   describe('with 2 channels with time slots', () => {
     beforeEach(() => setupComponent({
       children: [
-        <Channel name="Dave" key="Dave">
+        <TimeLine name="Dave" key="Dave">
           <TimeSlot
             start={new Date('1/1/99 13:30')}
             end={new Date('1/1/99 14:00')}
           >
             <Show title="Top Gear" />
           </TimeSlot>
-        </Channel>,
-        <Channel name="UKTV" key="UKTV">
+        </TimeLine>,
+        <TimeLine name="UKTV" key="UKTV">
           <TimeSlot
             start={new Date('1/1/99 13:45')}
             end={new Date('1/1/99 14:45')}
           >
             <Show title="Graeme" />
           </TimeSlot>
-        </Channel>
+        </TimeLine>
       ]
     }));
 
     timeIndicatorTests();
 
     it('does not add time slots to older channel time slots', () => {
-      const timeSlots = component.find(Channel).at(0).find(TimeSlot);
+      const timeSlots = component.find(TimeLine).at(0).find(TimeSlot);
       expect(timeSlots).toHaveLength(1);
     });
 
     it('fills in missing time slots', () => {
-      const timeSlots = component.find(Channel).at(1).find(TimeSlot);
+      const timeSlots = component.find(TimeLine).at(1).find(TimeSlot);
       expect(timeSlots).toHaveLength(2);
       expect(timeSlots.at(0)).toHaveProp('start', new Date('1/1/99 13:30'));
       expect(timeSlots.at(0)).toHaveProp('end', new Date('1/1/99 13:45'));
