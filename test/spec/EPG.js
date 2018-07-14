@@ -119,6 +119,11 @@ describe('EPG', () => {
 
     timeIndicatorTests();
 
+    it('does not add time slots to older channel time slots', () => {
+      const timeSlots = component.find(Channel).at(0).find(TimeSlot);
+      expect(timeSlots).toHaveLength(1);
+    });
+
     it('fills in missing time slots', () => {
       const timeSlots = component.find(Channel).at(1).find(TimeSlot);
       expect(timeSlots).toHaveLength(2);
