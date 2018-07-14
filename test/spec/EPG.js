@@ -3,7 +3,7 @@ import React from 'react';
 import Enzyme, { mount } from 'enzyme';
 import Adapter from 'enzyme-adapter-react-16';
 import 'jest-enzyme';
-import EPG, { TimeIndicator } from '../../lib/index';
+import EPG, { TimeIndicator, Channel, TimeSlot, Show } from '../../lib/index';
 
 Enzyme.configure({ adapter: new Adapter() });
 
@@ -24,12 +24,7 @@ describe('EPG', () => {
   const headTr = () => thead().find('tr');
   const th = () => headTr().find('th');
 
-  describe('with start and end props set', () => {
-    beforeEach(() => setupComponent({
-      start: new Date('1/1/99 13:30'),
-      end: new Date('1/1/99 14:45')
-    }));
-
+  const timeIndicatorTests = () => {
     it('sets the theads row first child to a th', () => {
       expect(headTr().children().first()).toHaveTagName('th');
     });
@@ -49,6 +44,32 @@ describe('EPG', () => {
     it('sets the 30th TimeIndicators time to 30 minutes after the first time', () => {
       expect(headTr().find(TimeIndicator).at(30)).toHaveProp('time', new Date('1/1/99 14:00').getTime());
     });
+  };
+
+  describe('with start and end props set', () => {
+    beforeEach(() => setupComponent({
+      start: new Date('1/1/99 13:30'),
+      end: new Date('1/1/99 14:45')
+    }));
+
+    timeIndicatorTests();
+  });
+
+  describe('with single channel and time slot', () => {
+    beforeEach(() => setupComponent({
+      children: (
+        <Channel name="Dave">
+          <TimeSlot
+            start={new Date('1/1/99 13:30')}
+            end={new Date('1/1/99 14:45')}
+          >
+            <Show title="Top Gear" />
+          </TimeSlot>
+        </Channel>
+      )
+    }));
+
+    timeIndicatorTests();
   });
 
   describe('basic structure', () => {
