@@ -13,7 +13,7 @@
     "test:watch": "NODE_ENV=test jest --watch",
     "test:mutate": "NODE_ENV=test stryker run",
     "codecov": "codecov",
-    "doc": "jsdoc",
+    "doc": "jsdoc -c jsdoc.json lib",
     "storybook": "start-storybook -p 6006",
     "build-storybook": "build-storybook"
   },
@@ -86,6 +86,7 @@
     "jest": "^22.4.3",
     "jest-enzyme": "^6.0.1",
     "jsdoc": "^3.5.5",
+    "jsdoc-babel": "^0.4.0",
     "react": "^16.4.0",
     "react-dom": "^16.4.0",
     "stryker": "^0.23.0",
