@@ -3,7 +3,7 @@ import React from 'react';
 import Enzyme, { mount } from 'enzyme';
 import Adapter from 'enzyme-adapter-react-16';
 import 'jest-enzyme';
-import EPG from '../../lib/index';
+import EPG, { TimeIndicator } from '../../lib/index';
 
 Enzyme.configure({ adapter: new Adapter() });
 
@@ -24,26 +24,43 @@ describe('EPG', () => {
   const headTr = () => thead().find('tr');
   const th = () => headTr().find('th');
 
-  beforeEach(setupComponent);
+  describe('with start and end props set', () => {
+    beforeEach(() => setupComponent({
+      start: new Date('1/1/99 13:30'),
+      end: new Date('1/1/99 14:45')
+    }));
 
-  it('renders a table', () => {
-    expect(component.children()).toHaveLength(1);
-    expect(table()).toHaveLength(1);
+    it('sets the theads row first child to a th', () => {
+      expect(headTr().children().first()).toHaveTagName('th');
+    });
+
+    it('adds a TimeIndicator for each minute', () => {
+      expect(headTr().find(TimeIndicator)).toHaveLength(75);
+    });
   });
 
-  it('renders a thead', () => {
-    expect(thead()).toHaveLength(1);
-  });
+  describe('basic structure', () => {
+    beforeEach(setupComponent);
 
-  it('renders a tbody', () => {
-    expect(tbody()).toHaveLength(1);
-  });
+    it('renders a table', () => {
+      expect(component.children()).toHaveLength(1);
+      expect(table()).toHaveLength(1);
+    });
 
-  it('renders a row in the thead', () => {
-    expect(headTr()).toHaveLength(1);
-  });
+    it('renders a thead', () => {
+      expect(thead()).toHaveLength(1);
+    });
 
-  it('renders a th in the row in the thead', () => {
-    expect(th()).toHaveLength(1);
+    it('renders a tbody', () => {
+      expect(tbody()).toHaveLength(1);
+    });
+
+    it('renders a row in the thead', () => {
+      expect(headTr()).toHaveLength(1);
+    });
+
+    it('renders a th in the row in the thead', () => {
+      expect(th()).toHaveLength(1);
+    });
   });
 });
