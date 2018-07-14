@@ -95,32 +95,30 @@ describe('EPG', () => {
     timeIndicatorTests();
   });
 
-  // describe('with 2 channels with time slots', () => {
-  //   beforeEach(() => setupComponent({
-  //     children: (
-  //       <React.Fragment>
-  //         <Channel name="Dave">
-  //           <TimeSlot
-  //             start={new Date('1/1/99 13:30')}
-  //             end={new Date('1/1/99 14:00')}
-  //           >
-  //             <Show title="Top Gear" />
-  //           </TimeSlot>
-  //         </Channel>
-  //         <Channel name="UKTV">
-  //           <TimeSlot
-  //             start={new Date('1/1/99 13:45')}
-  //             end={new Date('1/1/99 14:30')}
-  //           >
-  //             <Show title="Graeme" />
-  //           </TimeSlot>
-  //         </Channel>
-  //       </React.Fragment>
-  //     )
-  //   }));
+  describe('with 2 channels with time slots', () => {
+    beforeEach(() => setupComponent({
+      children: [
+        <Channel name="Dave">
+          <TimeSlot
+            start={new Date('1/1/99 13:30')}
+            end={new Date('1/1/99 14:00')}
+          >
+            <Show title="Top Gear" />
+          </TimeSlot>
+        </Channel>,
+        <Channel name="UKTV">
+          <TimeSlot
+            start={new Date('1/1/99 13:45')}
+            end={new Date('1/1/99 14:45')}
+          >
+            <Show title="Graeme" />
+          </TimeSlot>
+        </Channel>
+      ]
+    }));
 
-  //   timeIndicatorTests();
-  // });
+    timeIndicatorTests();
+  });
 
   describe('basic structure', () => {
     beforeEach(setupComponent);
