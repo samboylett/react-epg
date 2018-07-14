@@ -2,7 +2,7 @@
 <html lang="en">
 <head>
     <meta charset="utf-8">
-    <title>JSDoc: Source: Show.js</title>
+    <title>JSDoc: Source: TimeSlot.js</title>
 
     <script src="scripts/prettify/prettify.js"> </script>
     <script src="scripts/prettify/lang-css.js"> </script>
@@ -17,7 +17,7 @@
 
 <div id="main">
 
-    <h1 class="page-title">Source: Show.js</h1>
+    <h1 class="page-title">Source: TimeSlot.js</h1>
 
     
 
@@ -28,24 +28,30 @@
         <article>
             <pre class="prettyprint source linenums"><code>// @flow
 import * as React from 'react';
+import Show from './Show';
+import { getColSpan } from './helpers';
 
-export type ShowProps = {
-  title: string
+export type TimeSlotProps = {
+  start: Date | number,
+  end: Date | number,
+  children?: React.Element&lt;typeof Show>
 };
 
 /**
- * Component to render a show within a TimeSlot
+ * Component to render a time slot in a channel
  *
- * @param {ShowProps} props
- * @param {string} props.title - Title of the Show
+ * @param {TimeSlotProps} props
+ * @param {Date | number} props.start - Start time of the slot
+ * @param {Date | number} props.end - End time of the slot
+ * @param {React.Node} props.children - Contents for this time slot, typically a `Show`
  */
-const Show = ({ title }: ShowProps) => (
-  &lt;div>
-    {title}
-  &lt;/div>
+const TimeSlot = ({ children, start, end }: TimeSlotProps) => (
+  &lt;td colSpan={getColSpan(start, end)}>
+    {children}
+  &lt;/td>
 );
 
-export default Show;
+export default TimeSlot;
 </code></pre>
         </article>
     </section>
