@@ -118,6 +118,15 @@ describe('EPG', () => {
     }));
 
     timeIndicatorTests();
+
+    it('fills in missing time slots', () => {
+      const timeSlots = component.find(Channel).at(1).find(TimeSlot);
+      expect(timeSlots).toHaveLength(2);
+      expect(timeSlots.at(0)).toHaveProp('start', new Date('1/1/99 13:30'));
+      expect(timeSlots.at(0)).toHaveProp('end', new Date('1/1/99 13:44'));
+      expect(timeSlots.at(1)).toHaveProp('start', new Date('1/1/99 13:45'));
+      expect(timeSlots.at(1)).toHaveProp('end', new Date('1/1/99 14:45'));
+    });
   });
 
   describe('basic structure', () => {
