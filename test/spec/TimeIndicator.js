@@ -37,35 +37,35 @@ describe('TimeIndicator', () => {
     });
   };
 
-  describe('with an on the hour date', () => {
-    beforeEach(() => setupComponent({
-      time: new Date('1/1/99 16:00')
-    }));
+  const dateNumberTests = (name, date, props, tests) => {
+    describe(name, () => {
+      describe('as a date', () => {
+        beforeEach(() => setupComponent({
+          time: date
+        }));
 
-    renderTimeTests();
+        tests();
+      });
+
+      describe('as a number', () => {
+        beforeEach(() => setupComponent({
+          time: date.getTime()
+        }));
+
+        tests();
+      });
+    });
+  };
+
+  dateNumberTests('with time on the hour', new Date('1/1/99 16:00'), {}, () => {
+    it('renders the time text in the th', () => {
+      expect(th()).toHaveText('16:00');
+    });
   });
 
-  describe('with an the hour number', () => {
-    beforeEach(() => setupComponent({
-      time: 915206400000
-    }));
-
-    renderTimeTests();
-  });
-
-  describe('with a none display date', () => {
-    beforeEach(() => setupComponent({
-      time: new Date('1/1/99 16:15')
-    }));
-
-    renderNoTimeTests();
-  });
-
-  describe('with a none display number', () => {
-    beforeEach(() => setupComponent({
-      time: 915206500000
-    }));
-
-    renderNoTimeTests();
+  dateNumberTests('with time on the half hour', new Date('1/1/99 16:30'), {}, () => {
+    it('renders no text in the th', () => {
+      expect(th()).toHaveText('');
+    });
   });
 });
