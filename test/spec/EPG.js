@@ -35,7 +35,15 @@ describe('EPG', () => {
     });
 
     it('adds a TimeIndicator for each minute', () => {
-      expect(headTr().find(TimeIndicator)).toHaveLength(75);
+      expect(headTr().find(TimeIndicator)).toHaveLength(76);
+    });
+
+    it('sets the first TimeIndicators time to the first time', () => {
+      expect(headTr().find(TimeIndicator).first()).toHaveProp('time', new Date('1/1/99 13:30').getTime());
+    });
+
+    it('sets the last TimeIndicators time to the last time', () => {
+      expect(headTr().find(TimeIndicator).last()).toHaveProp('time', new Date('1/1/99 14:45').getTime());
     });
   });
 
