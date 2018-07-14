@@ -1,0 +1,16 @@
+language: node_js
+node_js: 10
+jobs:
+  include:
+    - stage: lint
+      script:
+        - npm run lint
+        - npm run flow
+    - stage: test
+      script:
+        - npm run test
+        - npm run test:mutate
+        - npm run codecov
+    - stage: build
+      script:
+        - npm run prepublishOnly

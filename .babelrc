@@ -1,0 +1,13 @@
+{
+  "presets": ["env", "react", "flow"],
+  "plugins": [
+    "transform-flow-comments",
+    "transform-class-properties",
+    "transform-object-rest-spread"
+  ],
+  "env": {
+    "test": {
+      "plugins": ["istanbul"]
+    }
+  }
+}
