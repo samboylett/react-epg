@@ -11,7 +11,7 @@ storiesOf('EPG', module)
       {story()}
     </div>
   ))
-  .add('basic EPG', () => (
+  .add('basic', () => (
     <EPG>
       <Channel name="Sky">
         <TimeSlot start={new Date('1/1/97 16:00')} end={new Date('1/1/97 16:30')}>
@@ -19,6 +19,23 @@ storiesOf('EPG', module)
         </TimeSlot>
         <TimeSlot start={new Date('1/1/97 16:30')} end={new Date('1/1/97 17:30')}>
           <Show title="A Movie" />
+        </TimeSlot>
+      </Channel>
+    </EPG>
+  ))
+  .add('two channels', () => (
+    <EPG>
+      <Channel name="Sky">
+        <TimeSlot start={new Date('1/1/97 16:00')} end={new Date('1/1/97 16:30')}>
+          <Show title="The Simpsons" />
+        </TimeSlot>
+        <TimeSlot start={new Date('1/1/97 16:30')} end={new Date('1/1/97 17:30')}>
+          <Show title="A Movie" />
+        </TimeSlot>
+      </Channel>
+      <Channel name="Dave">
+        <TimeSlot start={new Date('1/1/97 17:00')} end={new Date('1/1/97 18:00')}>
+          <Show title="Top Gear" />
         </TimeSlot>
       </Channel>
     </EPG>
