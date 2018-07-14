@@ -41,7 +41,8 @@ describe('TimeIndicator', () => {
     describe(name, () => {
       describe('as a date', () => {
         beforeEach(() => setupComponent({
-          time: date
+          time: date,
+          ...props
         }));
 
         tests();
@@ -49,7 +50,8 @@ describe('TimeIndicator', () => {
 
       describe('as a number', () => {
         beforeEach(() => setupComponent({
-          time: date.getTime()
+          time: date.getTime(),
+          ...props
         }));
 
         tests();
@@ -68,4 +70,15 @@ describe('TimeIndicator', () => {
       expect(th()).toHaveText('');
     });
   });
+
+  dateNumberTests(
+    'with time on the half hour and minutes set',
+    new Date('1/1/99 16:30'),
+    { minutes: [0, 30] },
+    () => {
+      it('renders the time in the th', () => {
+        expect(th()).toHaveText('16:30');
+      });
+    }
+  );
 });
