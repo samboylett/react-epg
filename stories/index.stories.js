@@ -3,7 +3,7 @@ import React from 'react';
 import { storiesOf } from '@storybook/react';
 import { action } from '@storybook/addon-actions';
 
-import EPG, { Show, TimeSlot, Channel } from '../lib/index';
+import EPG, { Show, TimeLine, TimeSlot, Channel } from '../lib/index';
 
 storiesOf('EPG', module)
   .addDecorator(story => (
@@ -13,30 +13,47 @@ storiesOf('EPG', module)
   ))
   .add('basic', () => (
     <EPG>
-      <Channel name="Sky">
+      <TimeLine channel={<Channel name="Sky" />}>
         <TimeSlot start={new Date('1/1/97 16:00')} end={new Date('1/1/97 16:30')}>
           <Show title="The Simpsons" />
         </TimeSlot>
         <TimeSlot start={new Date('1/1/97 16:30')} end={new Date('1/1/97 17:30')}>
           <Show title="A Movie" />
         </TimeSlot>
-      </Channel>
+      </TimeLine>
     </EPG>
   ))
   .add('two channels', () => (
     <EPG>
-      <Channel name="Sky">
+      <TimeLine channel={<Channel name="Sky" />}>
         <TimeSlot start={new Date('1/1/97 16:00')} end={new Date('1/1/97 16:30')}>
           <Show title="The Simpsons" />
         </TimeSlot>
         <TimeSlot start={new Date('1/1/97 17:00')} end={new Date('1/1/97 17:30')}>
           <Show title="A Movie" />
         </TimeSlot>
-      </Channel>
-      <Channel name="Dave">
+      </TimeLine>
+      <TimeLine channel={<Channel name="Dave" />}>
         <TimeSlot start={new Date('1/1/97 17:00')} end={new Date('1/1/97 17:30')}>
           <Show title="Top Gear" />
         </TimeSlot>
-      </Channel>
+      </TimeLine>
+    </EPG>
+  ))
+  .add('two channels with numbers', () => (
+    <EPG headerSpan={2}>
+      <TimeLine channel={[<th key="number">124</th>, <th key="name">Sky</th>]}>
+        <TimeSlot start={new Date('1/1/97 16:00')} end={new Date('1/1/97 16:30')}>
+          <Show title="The Simpsons" />
+        </TimeSlot>
+        <TimeSlot start={new Date('1/1/97 17:00')} end={new Date('1/1/97 17:30')}>
+          <Show title="A Movie" />
+        </TimeSlot>
+      </TimeLine>
+      <TimeLine channel={[<th key="number">150</th>, <th key="name">Dave</th>]}>
+        <TimeSlot start={new Date('1/1/97 17:00')} end={new Date('1/1/97 17:30')}>
+          <Show title="Top Gear" />
+        </TimeSlot>
+      </TimeLine>
     </EPG>
   ));
