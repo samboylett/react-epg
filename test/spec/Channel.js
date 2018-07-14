@@ -10,10 +10,10 @@ Enzyme.configure({ adapter: new Adapter() });
 describe('Channel', () => {
   let component;
 
-  const setupComponent = () => {
+  const setupComponent = (props = {}) => {
     component = mount((
-      <Channel name="Foo Bar">
-        <p>TimeSlots</p>
+      <Channel name="Foo Bar" {...props}>
+        {props.children || (<p>TimeSlots</p>)}
       </Channel>
     ));
   };
@@ -21,21 +21,23 @@ describe('Channel', () => {
   const tr = () => component.find('tr');
   const th = () => tr().find('th');
 
-  beforeEach(setupComponent);
+  describe('basic structure', () => {
+    beforeEach(setupComponent);
 
-  it('renders a tr', () => {
-    expect(component.children()).toHaveLength(1);
-    expect(tr()).toHaveLength(1);
-    expect(tr().children()).toHaveLength(2);
-  });
+    it('renders a tr', () => {
+      expect(component.children()).toHaveLength(1);
+      expect(tr()).toHaveLength(1);
+      expect(tr().children()).toHaveLength(2);
+    });
 
-  it('renders a th with channel name', () => {
-    expect(th()).toHaveLength(1);
-    expect(th()).toHaveText('Foo Bar');
-  });
+    it('renders a th with channel name', () => {
+      expect(th()).toHaveLength(1);
+      expect(th()).toHaveText('Foo Bar');
+    });
 
-  it('renders children after the th', () => {
-    expect(tr().children().at(1)).toHaveText('TimeSlots');
-    expect(tr().find('p')).toHaveText('TimeSlots');
+    it('renders children after the th', () => {
+      expect(tr().children().at(1)).toHaveText('TimeSlots');
+      expect(tr().find('p')).toHaveText('TimeSlots');
+    });
   });
 });
