@@ -25,10 +25,12 @@ describe('Channel', () => {
     beforeEach(() => setupComponent({
       children: [
         <TimeSlot
+          key="1"
           start={new Date('1/1/97 14:00')}
           end={new Date('1/1/97 15:00')}
         >Foo</TimeSlot>,
         <TimeSlot
+          key="2"
           start={new Date('1/1/97 16:00')}
           end={new Date('1/1/97 17:00')}
         >Bar</TimeSlot>

@@ -11,7 +11,7 @@ describe('Show', () => {
   let component;
 
   const setupComponent = () => {
-    component = mount((<Show title="Foo Bar" />))
+    component = mount((<Show title="Foo Bar" />));
   };
 
   beforeEach(setupComponent);

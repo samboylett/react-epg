@@ -1,14 +1,8 @@
 /* globals jest */
-import React from 'react';
-import Enzyme, { mount } from 'enzyme';
-import Adapter from 'enzyme-adapter-react-16';
-import 'jest-enzyme';
 import {
   dateToNumber,
   numberToDate
 } from '../../lib/helpers';
-
-Enzyme.configure({ adapter: new Adapter() });
 
 describe('helpers', () => {
   describe('dateToNumber', () => {

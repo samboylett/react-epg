@@ -110,7 +110,7 @@ describe('TimeIndicator', () => {
   dateNumberTests(
     'with time on the hour and format set',
     new Date('1/1/99 16:00'),
-    { format: (d) => d.toISOString() },
+    { format: d => d.toISOString() },
     () => {
       it('renders the time in the th using the format function', () => {
         expect(th()).toHaveText('1999-01-01T16:00:00.000Z');

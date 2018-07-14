@@ -98,7 +98,7 @@ describe('EPG', () => {
   describe('with 2 channels with time slots', () => {
     beforeEach(() => setupComponent({
       children: [
-        <Channel name="Dave">
+        <Channel name="Dave" key="Dave">
           <TimeSlot
             start={new Date('1/1/99 13:30')}
             end={new Date('1/1/99 14:00')}
@@ -106,7 +106,7 @@ describe('EPG', () => {
             <Show title="Top Gear" />
           </TimeSlot>
         </Channel>,
-        <Channel name="UKTV">
+        <Channel name="UKTV" key="UKTV">
           <TimeSlot
             start={new Date('1/1/99 13:45')}
             end={new Date('1/1/99 14:45')}
