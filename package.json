@@ -1,7 +1,7 @@
 {
   "name": "react-epg",
   "description": "TV guide style EPG component for React",
-  "version": "0.1.0",
+  "version": "0.1.1",
   "author": "Sam Boylett",
   "main": "dist/index.js",
   "scripts": {
